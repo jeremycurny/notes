@@ -72,6 +72,9 @@ $ sudo nano /etc/httpd/conf.d/001_example.com.conf
   ServerName example.com
   ServerAlias www.example.com
   DocumentRoot /var/www/html/vhosts/example.com
+  <Directory /var/www/html/vhosts/example.com>
+    AllowOverride All
+  </Directory>
 </VirtualHost>
 ```
 
