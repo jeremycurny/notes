@@ -12,7 +12,7 @@ sudo yum install -y httpd24 php56
 
 #### Optional
 ```
-sudo yum install -y php56-mysqlnd
+sudo yum install -y php56-gd php56-mysqlnd
 ```
 
 ### Httpd start and start on system boot
