@@ -50,11 +50,15 @@ sudo nano /etc/httpd/conf.d/000_default.conf
 
 ```bash
 sudo service httpd reload
+```
 
 ### example.com Vhost
+```bash
 mkdir /var/www/html/vhosts/example.com
 echo "example.com vhost" > /var/www/html/vhosts/example.com/index.html
 sudo nano /etc/httpd/conf.d/001_example.com.conf
+```
+
 ```
 <VirtualHost *:80>
   ServerName example.com
@@ -64,7 +68,9 @@ sudo nano /etc/httpd/conf.d/001_example.com.conf
 ```
 
 ## Restarting httpd
+```bash
 sudo service httpd restart
+```
 
 ## Testing
 - Acces with IP or public DSN => "default vhost"
