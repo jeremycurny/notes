@@ -3,10 +3,18 @@
 ## Initialization (as root)
 
 ### Packages
+
+#### Mandatory
 ```
 # yum update -y
 # yum install -y httpd24 php56
 ```
+
+#### Optional
+```
+# yum install -y php56-mysqlnd
+```
+
 ### Httpd start and start on system boot
 ```
 # chkconfig httpd on
