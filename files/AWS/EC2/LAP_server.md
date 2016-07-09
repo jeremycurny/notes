@@ -8,13 +8,9 @@ sudo yum update -y
 
 ## Httpd
 
-### Installation
+### Installation, start and start on system boot
 ```
-sudo yum install -y httpd24 php56
-```
-
-### Start and start on system boot
-```
+sudo yum install -y httpd24
 sudo chkconfig httpd on
 sudo service httpd start
 ```
@@ -55,7 +51,7 @@ sudo nano /etc/httpd/conf.d/000_default.conf
 ```
 
 ```
-sudo service httpd reload
+sudo service httpd restart
 ```
 
 #### example.com Vhost
