@@ -10,7 +10,7 @@ sudo yum update -y
 
 ### Installation, start and start on system boot
 ```
-sudo yum install -y httpd24
+sudo yum install -y httpd24 mod24_ssl
 sudo chkconfig httpd on
 sudo service httpd start
 ```
