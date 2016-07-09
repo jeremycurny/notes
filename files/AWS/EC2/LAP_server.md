@@ -85,6 +85,28 @@ sudo nano /etc/httpd/conf.d/001_example.com.conf
     AllowOverride All
   </Directory>
 </VirtualHost>
+
+<VirtualHost *:443>
+  ServerName example.com
+  ServerAlias www.example.com
+  DocumentRoot /var/www/html/vhosts/example.com
+  <Directory /var/www/html/vhosts/example.com>
+    AllowOverride All
+  </Directory>
+
+  SSLEngine on
+  SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+  SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+
+  <FilesMatch "\.(php)$">
+    SSLOptions +StdEnvVars
+  </FilesMatch>
+
+  BrowserMatch "MSIE [2-6]" \
+    nokeepalive ssl-unclean-shutdown \
+    downgrade-1.0 force-response-1.0
+  BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+</VirtualHost>
 ```
 
 ### Restarting httpd
