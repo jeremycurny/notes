@@ -50,10 +50,6 @@ sudo nano /etc/httpd/conf.d/000_default.conf
 </VirtualHost>
 ```
 
-```
-sudo service httpd restart
-```
-
 #### example.com Vhost
 ```
 mkdir /var/www/html/vhosts/example.com
