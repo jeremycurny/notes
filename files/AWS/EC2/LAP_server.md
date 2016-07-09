@@ -1,4 +1,5 @@
-# Installing a LAP server (Linux, Apache, PHP) on EC2 instance and Vhosts
+# Installing a LAP server on EC2 instance
+Linux, Apache, PHP on AWS EC2
 
 ## Initialization
 
