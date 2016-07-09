@@ -48,6 +48,24 @@ sudo nano /etc/httpd/conf.d/000_default.conf
   ServerName default:80
   DocumentRoot /var/www/html/vhosts/default
 </VirtualHost>
+
+<VirtualHost *:443>
+  ServerName default:443
+  DocumentRoot /var/www/html/vhosts/default
+
+  SSLEngine on
+  SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+  SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+
+  <FilesMatch "\.(php)$">
+    SSLOptions +StdEnvVars
+  </FilesMatch>
+
+  BrowserMatch "MSIE [2-6]" \
+    nokeepalive ssl-unclean-shutdown \
+    downgrade-1.0 force-response-1.0
+  BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+</VirtualHost>
 ```
 
 #### example.com Vhost
