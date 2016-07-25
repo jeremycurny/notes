@@ -83,6 +83,7 @@ sudo nano /etc/httpd/conf.d/001_example.com.conf
   DocumentRoot /var/www/html/vhosts/example.com
   <Directory /var/www/html/vhosts/example.com>
     AllowOverride All
+    Options -Indexes
   </Directory>
 </VirtualHost>
 
@@ -92,6 +93,7 @@ sudo nano /etc/httpd/conf.d/001_example.com.conf
   DocumentRoot /var/www/html/vhosts/example.com
   <Directory /var/www/html/vhosts/example.com>
     AllowOverride All
+    Options -Indexes
   </Directory>
 
   SSLEngine on
