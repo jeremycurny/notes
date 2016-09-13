@@ -62,13 +62,13 @@ Creating the /**frontName**/**action** url. Frontname = jcurnyfirstmodule, Actio
      </modules>
      <frontend>
        <routers>
-          <routeurfrontend>
+          <jcurnyfirstmodule>
               <use>standard</use>
               <args>
                  <module>Jcurny_Firstmodule</module>
                  <frontName>jcurnyfirstmodule</frontName>
               </args>
-           </routeurfrontend>
+           </jcurnyfirstmodule>
        </routers>
     </frontend>
 </config>
