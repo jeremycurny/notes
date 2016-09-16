@@ -23,12 +23,12 @@ Code of the module, will be in /app/code/local/..., example : /app/code/local/Jc
 
 ```
 <?xml version="1.0"?>
-  <config>
-     <modules>
-        <Jcurny_Firstmodule>
-          <version>1.0.0</version>
-        </Jcurny_Firstmodule>
-     </modules>
+<config>
+  <modules>
+    <Jcurny_Firstmodule>
+      <version>1.0.0</version>
+    </Jcurny_Firstmodule>
+  </modules>
 </config>
 ```
 
@@ -37,12 +37,12 @@ Code of the module, will be in /app/code/local/..., example : /app/code/local/Jc
 ```
 <?xml version="1.0"?>
 <config>
-	<modules>
-		<Jcurny_Firstmodule>
-			<active>true</active>
-			<codePool>local</codePool>
-		</Jcurny_Firstmodule>
-	</modules>
+  <modules>
+    <Jcurny_Firstmodule>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Jcurny_Firstmodule>
+  </modules>
 </config>
 ```
 
@@ -50,28 +50,20 @@ Code of the module, will be in /app/code/local/..., example : /app/code/local/Jc
 
 Creating the /**frontName**/**action** url. Frontname = jcurnyfirstmodule, Action= index (see config.xml and controller below)
 
-* Edit the file /app/code/local/Jcurny/Firstmodule/etc/config.xml :
+* Edit the file /app/code/local/Jcurny/Firstmodule/etc/config.xml, add this child node in the config node :
 
 ```
-<?xml version="1.0"?>
-  <config>
-     <modules>
-        <Jcurny_Firstmodule>
-          <version>1.0.0</version>
-        </Jcurny_Firstmodule>
-     </modules>
-     <frontend>
-       <routers>
-          <jcurnyfirstmodule>
-              <use>standard</use>
-              <args>
-                 <module>Jcurny_Firstmodule</module>
-                 <frontName>jcurnyfirstmodule</frontName>
-              </args>
-           </jcurnyfirstmodule>
-       </routers>
-    </frontend>
-</config>
+<frontend>
+  <routers>
+    <jcurnyfirstmodule>
+      <use>standard</use>
+      <args>
+        <module>Jcurny_Firstmodule</module>
+        <frontName>jcurnyfirstmodule</frontName>
+      </args>
+    </jcurnyfirstmodule>
+  </routers>
+</frontend>
 ```
 
 * Create the file /app/code/local/Jcurny/Firstmodule/controllers/IndexController.php :
@@ -88,3 +80,37 @@ class Jcurny_Firstmodule_IndexController extends Mage_Core_Controller_Front_Acti
 ```
 
 * Try http://website.com/jcurnyfirstmodule/index
+
+### Helper
+
+* Edit the file /app/code/local/Jcurny/Firstmodule/etc/config.xml, add this child node in the config node :
+
+```
+<global>
+  <helpers>
+    <jcurny_firstmodule>
+      <class>Jcurny_Firstmodule_Helper</class>
+    </jcurny_firstmodule>
+  </helpers>
+</global>
+```
+
+* Create the file /app/code/local/Jcurny/Firstmodule/Helper/Boo.php :
+
+```
+<?php
+class Jcurny_Firstmodule_Helper_Boo extends Mage_Core_Helper_Abstract
+{
+   public function boo()
+   {
+     return 'boo !';
+   }
+}
+```
+
+To call it : 
+
+```
+$booHelper = Mage::helper('jcurny_firstmodule/boo');
+echo $booHelper->boo();
+```
