@@ -2,12 +2,14 @@
 
 ## Initialization
 
-### Nodemon
+### Utils
 
 Nodemon (reload server when source changed)
+Node-inspector (debugger interface)
 
 ```
 npm install -g nodemon
+npm install -g node-inspector
 ```
 
 ### Application folder
@@ -25,6 +27,7 @@ Entry point : server.js
 ```
 npm init
 npm install express --save
+npm install mongoose --save
 ```
 
 ### Development
