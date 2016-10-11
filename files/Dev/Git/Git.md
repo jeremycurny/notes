@@ -3,8 +3,17 @@
 ## Avoid collaborative errors
 
 ### CR, CRLF
+
+#### By configuring Git
+
 ```
 git config core.autocrlf true
+```
+
+#### By remplacing on local
+
+```
+find . -type f -exec dos2unix {} \;
 ```
 
 ### Ignore fileMode (chmod)
