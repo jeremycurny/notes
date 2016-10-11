@@ -11,7 +11,8 @@ apt-get install -y chromium
 
 ```
 apt-get install -y apache2 openssl
-a2enmod expires headers rewrite ssl
+a2enmod deflate expires headers rewrite ssl
+service apache2 restart
 ```
 
 ## MySQL
