@@ -11,3 +11,9 @@ git config core.autocrlf true
 ```
 git config core.fileMode false
 ```
+
+## Change remote URL
+
+```
+git remote set-url origin ssh://git@github.com:jeremycurny/project.git
+```
