@@ -3,7 +3,7 @@
 ## Utils
 
 ```
-apt-get install -y autoconf automake build-essential curl fail2ban gcc htop make mysql-client sudo
+apt-get install -y autoconf automake build-essential curl fail2ban gcc htop linux-headers-$(uname -r) make mysql-client sudo
 apt-get install -y chromium
 ```
 
