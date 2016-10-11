@@ -3,7 +3,7 @@
 ## Utils
 
 ```
-apt-get install -y curl fail2ban htop mysql-client
+apt-get install -y autoconf automake build-essential curl fail2ban htop mysql-client
 apt-get install -y chromium
 ```
 
