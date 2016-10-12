@@ -9,7 +9,7 @@ mkdir -p /var/www/html/vhosts
 mkdir -p /var/www/html/vhosts/default
 echo 'Deny from all' > /var/www/html/.htaccess
 echo 'Deny from all' > /var/www/html/vhosts/.htaccess
-echo '<!-- default -->' > /var/www/html/default/index.html
+echo '<!-- default -->' > /var/www/html/vhosts/default/index.html
 chown -R root:www-data /var/www/html
 find /var/www/html -type d -exec chmod 2770 {} \;
 find /var/www/html -type f -exec chmod 0660 {} \;
