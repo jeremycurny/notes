@@ -42,6 +42,9 @@ cat <<EOF > /etc/apache2/sites-available/000-default.conf
                 </Directory>
 
                 BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+                
+                ErrorLog ${APACHE_LOG_DIR}/default.error.log
+                CustomLog ${APACHE_LOG_DIR}/default.access.log combined
         </VirtualHost>
 </IfModule>
 EOF
