@@ -25,7 +25,7 @@ service apache2 restart
 ```
 add-apt-repository ppa:webupd8team/java
 apt-get update
-apt-get install-y  oracle-java8-installer oracle-java8-set-default
+apt-get install-y oracle-java8-installer oracle-java8-set-default
 ```
 
 ### MySQL
