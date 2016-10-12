@@ -40,5 +40,5 @@ apt-get install -y mysql-server
 
 ```
 apt-get install -y php5 php5-curl php5-gd php5-mcrypt php5-mysql
-curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar
+curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
 ```
