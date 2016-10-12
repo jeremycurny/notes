@@ -42,3 +42,13 @@ apt-get install -y mysql-server
 apt-get install -y php5 php5-curl php5-gd php5-mcrypt php5-mysql
 curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
 ```
+
+## Development
+
+### PHPStorm
+
+```
+wget https://download.jetbrains.com/webide/PhpStorm-2016.2.1.tar.gz
+tar xfz PhpStorm-2016.2.1.tar.gz
+bash PhpStorm-162.1889.1/bin/phpstorm.sh
+```
