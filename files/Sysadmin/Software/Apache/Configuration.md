@@ -10,9 +10,9 @@ mkdir -p /var/www/html/vhosts/default
 echo 'Deny from all' > /var/www/html/.htaccess
 echo 'Deny from all' > /var/www/html/vhosts/.htaccess
 echo '<!-- default -->' > /var/www/html/vhosts/default/index.html
-chown -R root:www-data /var/www/html
-find /var/www/html -type d -exec chmod 2770 {} \;
-find /var/www/html -type f -exec chmod 0660 {} \;
+chown -R root:www-data /var/www
+find /var/www -type d -exec chmod 2770 {} \;
+find /var/www -type f -exec chmod 0660 {} \;
 cat <<EOF > /etc/apache2/sites-available/000-default.conf
 <VirtualHost _default_:80>
         ServerName default:80
