@@ -14,7 +14,7 @@ chown -R root:www-data /var/www/html
 find /var/www/html -type d -exec chmod 2770 {} \;
 find /var/www/html -type f -exec chmod 0660 {} \;
 cat <<EOF > /etc/apache2/sites-available/000-default.conf
-<VirtualHost *:80>
+<VirtualHost _default_:80>
         ServerName default:80
         DocumentRoot /var/www/html/vhosts/default
 
