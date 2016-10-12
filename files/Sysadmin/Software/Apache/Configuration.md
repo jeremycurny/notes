@@ -27,9 +27,6 @@ cat <<EOF > /etc/apache2/sites-available/000-default.conf
                 ServerName default:80
                 DocumentRoot /var/www/html/vhosts/default
 
-                ErrorLog ${APACHE_LOG_DIR}/default.error.log
-                CustomLog ${APACHE_LOG_DIR}/default.access.log combined
-
                 SSLEngine on
 
                 SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
