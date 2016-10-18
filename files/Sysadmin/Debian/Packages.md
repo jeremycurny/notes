@@ -36,6 +36,13 @@ apt-get install -y oracle-java8-installer oracle-java8-set-default
 apt-get install -y mysql-server
 ```
 
+### NodeJS / NPM
+
+```
+curl -sL https://deb.nodesource.com/setup_4.x | bash
+apt-get install -y nodejs
+```
+
 ### PHP
 
 ```
