@@ -4,7 +4,6 @@ Vagrant.configure("2") do |config|
   config.vm.network "public_network"
 
   # Sync
-  config.vm.synced_folder "mount/var/log", "/var/log", create: true
   config.vm.synced_folder "mount/var/www", "/var/www", create: true
 
   # Shell provisioner
