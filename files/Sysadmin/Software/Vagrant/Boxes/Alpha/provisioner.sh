@@ -12,10 +12,11 @@ apt-get update
 # Common
 echo "Common"
 apt-get install -y linux-headers-$(uname -r)
-apt-get install -y autoconf automake build-essential gcc make
-apt-get install -y curl htop
+apt-get install -y autoconf automake build-essential gcc libtool make
+apt-get install -y curl fail2ban htop iftop iotop telnet
 apt-get install -y debconf-utils
 apt-get install -y python-software-properties software-properties-common
+apt-get install -y libcurl4-openssl-dev zlib1g-dev
 
 # Apache
 echo "Apache"
@@ -30,7 +31,7 @@ apt-get install -y git git-flow
 echo "Installing Mysql Server"
 debconf-set-selections <<< "mysql-server mysql-server/root_password password t00r"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password t00r"
-apt-get install -y mysql mysql-server
+apt-get install -y mysql-client mysql-server
 
 # NodeJS / NPM
 echo "NodeJS / NPM"
@@ -38,7 +39,9 @@ curl -sL https://deb.nodesource.com/setup_4.x | bash && apt-get install -y nodej
 
 # PHP
 echo "PHP"
-apt-get install -y php5 php-apc php5-cli php5-curl php5-dev php5-gd php5-imap php5-intl php5-mcrypt php5-mysql php5-xdebug
+apt-get install -y php5
+apt-get install -y php-apc php5-cli php5-curl php5-dev php5-gd php5-imap php5-intl php5-mcrypt php5-xdebug
+apt-get install -y php5-mysql php5-sqlite
 
 # Apache configure
 echo "Apache configure"
@@ -88,6 +91,18 @@ curl -o /var/www/html/vhosts/default/adminer/index.php http://www.adminer.org/st
 echo "Composer"
 curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
 
+## Other - Geoip
+echo "Geoip"
+apt-get install -y geoip-bin geoip-database libgeoip-dev libgeoip1
+apt-get install -y libapache2-mod-geoip php5-geoip
+cat <<EOF > /etc/apache2/mods-available/geoip.conf
+<IfModule mod_geoip.c>
+  GeoIPEnable On
+  GeoIPOutput All
+  GeoIPDBFile /usr/share/GeoIP/GeoIP.dat
+</IfModule>
+EOF
+
 ## Other - Infos
 echo "Infos"
 mkdir -p /var/www/html/vhosts/default/infos
@@ -107,6 +122,7 @@ ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/apache/conf.d/phalcon.ini
 # Post install
 echo "Post install"
 service apache2 restart
+service mysql restart
 
 # End
 echo "provisioner.sh end"
