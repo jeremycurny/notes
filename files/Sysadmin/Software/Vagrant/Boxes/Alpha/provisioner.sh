@@ -4,7 +4,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Start
 echo "provisioner.sh start"
-echo "build"
 
 # Update
 echo "Apt-get update"
@@ -14,9 +13,9 @@ apt-get update
 echo "Common"
 apt-get install -y linux-headers-$(uname -r)
 apt-get install -y autoconf automake build-essential gcc make
+apt-get install -y curl htop
 apt-get install -y debconf-utils
 apt-get install -y python-software-properties software-properties-common
-apt-get install -y curl htop mysql
 
 # Apache
 echo "Apache"
@@ -31,18 +30,15 @@ apt-get install -y git git-flow
 echo "Installing Mysql Server"
 debconf-set-selections <<< "mysql-server mysql-server/root_password password t00r"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password t00r"
-apt-get install -y mysql-server
+apt-get install -y mysql mysql-server
 
 # NodeJS / NPM
 echo "NodeJS / NPM"
-curl -sL https://deb.nodesource.com/setup_4.x | bash
-apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_4.x | bash && apt-get install -y nodejs
 
 # PHP
 echo "PHP"
-apt-get install -y php5 php-apc php5-curl php5-gd php5-imap php5-intl php5-mcrypt php5-mysql php5-xdebug
-curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar
-chmod +x /usr/local/bin/composer
+apt-get install -y php5 php-apc php5-cli php5-curl php5-dev php5-gd php5-imap php5-intl php5-mcrypt php5-mysql php5-xdebug
 
 # Apache configure
 echo "Apache configure"
@@ -82,9 +78,31 @@ EOF
 a2ensite 000-default.conf
 
 # Other
-echo "Other"
+
+## Other - Adminer
+echo "Adminer"
 mkdir -p /var/www/html/vhosts/default/adminer
 curl -o /var/www/html/vhosts/default/adminer/index.php http://www.adminer.org/static/download/4.2.5/adminer-4.2.5-en.php
+
+## Other - Composer
+echo "Composer"
+curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
+
+## Other - Infos
+echo "Infos"
+mkdir -p /var/www/html/vhosts/default/infos
+cat <<EOF > /var/www/html/vhosts/default/infos/index.php
+<?php
+  phpinfo();
+EOF
+
+## Other - PHP Phalcon
+echo "PHP Phalcon"
+curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | bash
+apt-get install -y php5-phalcon
+echo 'extension=phalcon.so' > /etc/php5/mods-available/phalcon.ini
+ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/cli/conf.d/phalcon.ini
+ln -s /etc/php5/mods-available/phalcon.ini /etc/php5/apache/conf.d/phalcon.ini
 
 # Post install
 echo "Post install"
