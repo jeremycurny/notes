@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+
+export DEBIAN_FRONTEND=noninteractive
 
 # Start
 echo "provisioner.sh start"
+echo "build"
 
 # Update
 echo "Apt-get update"
@@ -11,7 +14,9 @@ apt-get update
 echo "Common"
 apt-get install -y linux-headers-$(uname -r)
 apt-get install -y autoconf automake build-essential gcc make
-apt-get install -y curl htop
+apt-get install -y debconf-utils
+apt-get install -y python-software-properties software-properties-common
+apt-get install -y curl htop mysql
 
 # Apache
 echo "Apache"
@@ -22,6 +27,12 @@ a2enmod deflate expires headers rewrite ssl
 echo "Installing Git"
 apt-get install -y git git-flow
 
+# Mysql
+echo "Installing Mysql Server"
+debconf-set-selections <<< "mysql-server mysql-server/root_password password t00r"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password t00r"
+apt-get install -y mysql-server
+
 # NodeJS / NPM
 echo "NodeJS / NPM"
 curl -sL https://deb.nodesource.com/setup_4.x | bash
@@ -30,7 +41,8 @@ apt-get install -y nodejs
 # PHP
 echo "PHP"
 apt-get install -y php5 php-apc php5-curl php5-gd php5-imap php5-intl php5-mcrypt php5-mysql php5-xdebug
-curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
+curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar
+chmod +x /usr/local/bin/composer
 
 # Apache configure
 echo "Apache configure"
@@ -68,6 +80,11 @@ cat <<EOF > /etc/apache2/sites-available/000-default.conf
 </IfModule>
 EOF
 a2ensite 000-default.conf
+
+# Other
+echo "Other"
+mkdir -p /var/www/html/vhosts/default/adminer
+curl -o /var/www/html/vhosts/default/adminer/index.php http://www.adminer.org/static/download/4.2.5/adminer-4.2.5-en.php
 
 # Post install
 echo "Post install"
