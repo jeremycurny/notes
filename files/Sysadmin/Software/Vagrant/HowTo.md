@@ -57,10 +57,6 @@ echo "Apache"
 apt-get install -y apache2 openssl
 a2enmod deflate expires headers rewrite ssl
 
-# Git
-echo "Installing Git"
-apt-get install -y git git-flow
-
 # Post install
 echo "Post install"
 service apache2 restart
@@ -78,8 +74,8 @@ vagrant up
 vagrant ssh
 ```
 
-### Try git
+### Try apache
 
 ```
-git -v
+apache -v
 ```
