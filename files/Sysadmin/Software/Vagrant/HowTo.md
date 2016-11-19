@@ -36,7 +36,7 @@ end
 
 #### provisioner.sh file
 
-```
+```bash
 #!/bin/sh
 
 # Start
