@@ -7,6 +7,7 @@
 - **vagrant halt** : Shutdown the VM
 - **vagrant provision** : Run provision on the VM
 - **vagrant destroy** : Destroy the VM
+- **vagrant destroy -f && vagrant up** : Destroy and install the VM
 
 ## Example of virtual machine
 
