@@ -22,5 +22,9 @@ cat <<EOF > /var/www/html/vhosts/default/infos/index.php
   phpinfo();
 EOF
 
+## NPM
+echo "NPM"
+npm install -g bower gulp-cli grunt-cli
+
 # End
 echo "003_extra.sh end"
