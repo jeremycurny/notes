@@ -13,7 +13,7 @@ apt-get update
 echo "Common"
 apt-get install -y linux-headers-$(uname -r)
 apt-get install -y autoconf automake build-essential gcc libtool make
-apt-get install -y curl fail2ban htop iftop iotop telnet
+apt-get install -y curl fail2ban htop iftop iotop telnet zip
 apt-get install -y debconf-utils
 apt-get install -y python-pip python-software-properties software-properties-common
 apt-get install -y libcurl4-openssl-dev zlib1g-dev
