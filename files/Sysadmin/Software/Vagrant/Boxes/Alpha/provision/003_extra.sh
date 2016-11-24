@@ -10,6 +10,10 @@ echo "Adminer"
 mkdir -p /var/www/html/vhosts/default/adminer
 curl -o /var/www/html/vhosts/default/adminer/index.php http://www.adminer.org/static/download/4.2.5/adminer-4.2.5-en.php
 
+## AWS CLI
+echo "AWS CLI"
+pip install --upgrade --user awsebcli
+
 ## Composer
 echo "Composer"
 curl -o /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
