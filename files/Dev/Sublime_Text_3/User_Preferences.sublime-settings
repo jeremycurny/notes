@@ -2,7 +2,7 @@
 	"bold_folder_labels": true,
 	"draw_minimap_border": true,
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 11,
+	"font_size": 9,
 	"highlight_line": true,
 	"ignored_packages": ["Vintage"],
 	"save_on_focus_lost": true,
