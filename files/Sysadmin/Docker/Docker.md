@@ -18,7 +18,7 @@ docker run
 * -i: Keep STDIN open even if not attached
 * -t: Allocate a pseudo-tty
 * -v: Volumes, volumes without names are deleted
-* --name <name>: Name the container
+* --name `<name>`: Name the container
 * --rm: Rm after container exits
 
 ```
