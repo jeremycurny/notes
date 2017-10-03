@@ -41,6 +41,16 @@ docker run -e MYSQL_ROOT_PASSWORD=t00r -p 3306:3306 -d mysql:latest
 
 ## Examples
 
+### Apache
+
+```
+# Run
+docker run -d -p 80:80 -p 443:443 -v /docker/volumes/html:/var/www/html --name apache jeremycurny/apache
+
+# Backup
+zip -r /backup/html_$(date +"%m_%d_%Y_%H%M%S").zip /docker/volumes/html
+```
+
 ### Run MySQL environment
 
 ```
