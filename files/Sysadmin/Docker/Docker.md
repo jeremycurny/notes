@@ -4,11 +4,16 @@
 
 ### Exec
 
+Execute a command on a running container
+
 ```
 docker exec -it <mycontainer> <command>
+docker exec -it apache ls /var/www/html
 ```
 
 ### Run
+
+Run a container
 
 ```
 docker run
@@ -28,6 +33,8 @@ docker run -d -p 80:80 -p 443:443 jeremycurny/apache
 docker run -d -e var=toto -p 80:80 -p 443:443 jeremycurny/apache
 docker run -d -p 80:80 -p 443:443 -v /var/www/html jeremycurny/apache
 docker run -d -p 80:80 -p 443:443 -v /docker/volumes/html:/var/www/html jeremycurny/apache
+docker run -d -p 80:80 -p 443:443 -v /docker/volumes/html:/var/www/html --name apache jeremycurny/apache
+docker run -d -p 80:80 -p 443:443 -v /docker/volumes/html:/var/www/html --name apache jeremycurny/apache
 
 docker run -e MYSQL_ROOT_PASSWORD=t00r -p 3306:3306 -d mysql:latest
 ```
