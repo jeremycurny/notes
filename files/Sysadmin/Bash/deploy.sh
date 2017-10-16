@@ -27,4 +27,4 @@ zip -qr /tmp/deploy/${zipFilename} $1
 
 ssh $2 "mkdir -p /tmp/deploy/ondeck && rm -rf /tmp/deploy/ondeck/*"
 scp /tmp/deploy/${zipFilename} $2:/tmp/deploy/ondeck/${zipFilename}
-ssh $2 "unzip -q /tmp/deploy/ondeck/${zipFilename} && rm /tmp/deploy/ondeck/${zipFilename}"
+ssh $2 "unzip -q -d /tmp/deploy/ondeck/ /tmp/deploy/ondeck/${zipFilename} && rm /tmp/deploy/ondeck/${zipFilename}"
