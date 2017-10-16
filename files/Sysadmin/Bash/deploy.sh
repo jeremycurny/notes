@@ -21,9 +21,7 @@ if [ -z "$3" ]; then
     exit 1
 fi
 
-
 now=`date '+%Y%m%d%H%M%S'`;
-
 zipFilename="deploy-${now}.zip"
 
 mkdir -p tmpPath
